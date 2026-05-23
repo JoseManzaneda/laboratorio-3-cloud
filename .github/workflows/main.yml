@@ -1,4 +1,4 @@
-name: Validacion y Despliegue de Vue
+name: Validacion en Multiples Entornos (Matrix)
 
 on:
   push:
@@ -8,15 +8,19 @@ on:
 jobs:
   calidad-y-compilacion:
     runs-on: ubuntu-latest
+    
+    strategy:
+      matrix:
+        node-version: [18, 20, 22]
+
     steps:
       - name: 1. Descargar el codigo (Checkout)
         uses: actions/checkout@v4
 
-      - name: 2. Configurar el entorno de Node.js
+      - name: 2. Configurar entorno de Node.js (Version ${{ matrix.node-version }})
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
-
+          node-version: ${{ matrix.node-version }}
       - name: 3. Instalar dependencias del proyecto
         run: npm install
 
