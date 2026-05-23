@@ -36,7 +36,6 @@ export default {
   methods: {
     toggleLanguage() {
       this.clickCount++;
-      // Cambia dinámicamente entre Mundo (Español) y World (Inglés)
       this.value = this.value === "Mundo" ? "World" : "Mundo";
     }
   }
