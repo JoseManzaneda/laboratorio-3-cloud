@@ -1,4 +1,4 @@
-name: Mi Primer Workflow
+name: Explorando el Entorno
 
 on:
   push:
@@ -6,8 +6,14 @@ on:
       - main
 
 jobs:
-  hola-mundo:
+  exploracion:
     runs-on: ubuntu-latest
     steps:
       - name: Imprimir un saludo
-        run: echo "¡Hola Mundo desde GitHub Actions!"
+        run: echo "¡Hola Mundo!"
+
+      - name: Dime la fecha actual
+        run: date
+
+      - name: Muestra el contenido del directorio
+        run: ls -la
