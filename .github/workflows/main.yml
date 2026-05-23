@@ -1,4 +1,4 @@
-name: Explorando el Entorno con Checkout
+name: Instalacion y Build de Vue
 
 on:
   push:
@@ -6,17 +6,19 @@ on:
       - main
 
 jobs:
-  exploracion:
+  compilacion:
     runs-on: ubuntu-latest
     steps:
-      - name: Descargar el codigo del repositorio (Checkout)
+      - name: 1. Descargar el codigo (Checkout)
         uses: actions/checkout@v4
 
-      - name: Imprimir un saludo
-        run: echo "¡Hola Mundo! Ahora si tenemos el codigo."
+      - name: 2. Configurar el entorno de Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20' 
 
-      - name: Dime la fecha actual
-        run: date
+      - name: 3. Instalar dependencias del proyecto
+        run: npm install
 
-      - name: Muestra el contenido del directorio
-        run: ls -la
+      - name: 4. Compilar la aplicacion Vue (Build)
+        run: npm run build
