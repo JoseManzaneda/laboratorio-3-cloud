@@ -4,15 +4,16 @@ on:
   push:
     branches:
       - main
+  pull_request:
+    branches:
+      - main
 
 jobs:
   calidad-y-compilacion:
     runs-on: ubuntu-latest
-    
     strategy:
       matrix:
         node-version: [18, 20, 22]
-
     steps:
       - name: 1. Descargar el codigo (Checkout)
         uses: actions/checkout@v4
@@ -21,6 +22,7 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node-version }}
+
       - name: 3. Instalar dependencias del proyecto
         run: npm install
 
