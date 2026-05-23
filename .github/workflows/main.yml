@@ -1,4 +1,4 @@
-name: Explorando el Entorno
+name: Explorando el Entorno con Checkout
 
 on:
   push:
@@ -9,8 +9,11 @@ jobs:
   exploracion:
     runs-on: ubuntu-latest
     steps:
+      - name: Descargar el codigo del repositorio (Checkout)
+        uses: actions/checkout@v4
+
       - name: Imprimir un saludo
-        run: echo "¡Hola Mundo!"
+        run: echo "¡Hola Mundo! Ahora si tenemos el codigo."
 
       - name: Dime la fecha actual
         run: date
