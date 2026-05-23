@@ -1,4 +1,4 @@
-name: Instalacion y Build de Vue
+name: Validacion y Despliegue de Vue
 
 on:
   push:
@@ -6,7 +6,7 @@ on:
       - main
 
 jobs:
-  compilacion:
+  calidad-y-compilacion:
     runs-on: ubuntu-latest
     steps:
       - name: 1. Descargar el codigo (Checkout)
@@ -20,7 +20,10 @@ jobs:
       - name: 3. Instalar dependencias del proyecto
         run: npm install
 
-      - name: 4. Compilar la aplicacion Vue (Build)
+      - name: 4. Ejecutar control de calidad (Lint)
+        run: npm run lint
+
+      - name: 5. Compilar la aplicacion Vue (Build)
         env:
           NODE_OPTIONS: --openssl-legacy-provider
         run: npm run build
